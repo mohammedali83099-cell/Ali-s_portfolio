@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useMemo, useState, useEffect, useCallback } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { ALL_TECHNOLOGIES, type TechItem } from '@/lib/projects';
 
@@ -854,6 +854,18 @@ function KeypadScene({
   onHoverTech,
 }: KeypadSceneProps) {
   const rootRef = useRef<THREE.Group>(null);
+  const { size, camera } = useThree();
+
+  const aspect = size.width / Math.max(1, size.height);
+  const portraitScale = aspect < 1.15 ? Math.max(1.0, 1.15 / aspect) : 1.0;
+
+  useFrame(() => {
+    const targetZ = 8.2 * portraitScale;
+    if (Math.abs(camera.position.z - targetZ) > 0.01) {
+      camera.position.z = targetZ;
+      camera.updateProjectionMatrix();
+    }
+  });
 
   useEffect(() => {
     if (rootRef.current) {

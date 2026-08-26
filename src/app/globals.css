@@ -1346,7 +1346,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   RESPONSIVE — MOBILE (≤ 768px)
+   RESPONSIVE — TABLET & MOBILE (≤ 768px)
    ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   :root {
@@ -1359,26 +1359,27 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .pf-nav-hamburger { display: flex; }
 
   /* Hero */
-  .pf-hero { min-height: auto; padding-top: 48px; padding-bottom: 40px; }
+  .pf-hero { min-height: auto; padding-top: 56px; padding-bottom: 40px; }
   .pf-hero-identity { margin-bottom: 18px; }
-  .pf-hero-name { font-size: 26px; }
-  .pf-hero-headline { font-size: 18px; line-height: 1.35; margin-bottom: 14px; }
-  .pf-hero-body { font-size: 14.5px; line-height: 1.72; margin-bottom: 24px; }
+  .pf-hero-name { font-size: clamp(28px, 6.8vw, 42px); line-height: 1.1; }
+  .pf-hero-program { font-size: 10.5px; letter-spacing: 0.1em; }
+  .pf-hero-headline { font-size: clamp(19px, 4.4vw, 24px); line-height: 1.32; margin-bottom: 16px; }
+  .pf-hero-body { font-size: 15px; line-height: 1.68; margin-bottom: 28px; }
 
-  /* Hero Metrics */
-  .pf-hero-metrics-strip { margin-bottom: 20px; }
+  /* Hero Metrics — 2x2 Grid */
+  .pf-hero-metrics-strip { margin-bottom: 24px; }
   .pf-hero-metrics-grid { grid-template-columns: repeat(2, 1fr); }
-  .pf-hero-metric { padding: 14px 12px 14px 0; }
-  .pf-hero-metric:nth-child(even) { padding-left: 14px; border-right: none; }
+  .pf-hero-metric { padding: 16px 14px 16px 0; }
+  .pf-hero-metric:nth-child(even) { padding-left: 16px; border-right: none; }
   .pf-hero-metric:nth-child(odd) { border-right: 1px solid var(--border); padding-left: 0; }
   .pf-hero-metric:nth-child(3),
   .pf-hero-metric:nth-child(4) { border-top: 1px solid var(--border); }
-  .pf-hero-metric-num { font-size: 24px; }
-  .pf-hero-metric-action { opacity: 0.85; transform: none; font-size: 8px; }
+  .pf-hero-metric-num { font-size: clamp(22px, 5.5vw, 28px); }
+  .pf-hero-metric-action { opacity: 0.85; transform: none; font-size: 8.5px; }
   .pf-hero-metric-arrow { opacity: 0.7; transform: none; }
 
   /* Sections */
-  .pf-section { padding-top: 52px; padding-bottom: 44px; }
+  .pf-section { padding-top: 54px; padding-bottom: 44px; }
   .pf-section--viewport { min-height: auto; }
   .pf-section-cue-wrap { padding-top: 28px; }
 
@@ -1387,29 +1388,29 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
 
-  /* Project entries — single column */
+  /* Project entries — stacked presentation with high-clarity visual preview */
   .pf-project-entry-inner {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 24px 0 24px 12px;
+    gap: 22px;
+    padding: 24px 0 24px 8px;
   }
 
   .pf-project-right {
     display: block;
-    height: auto;
+    width: 100%;
   }
 
   .pf-project-visual {
-    aspect-ratio: 16 / 9;
-    max-height: 110px;
+    aspect-ratio: 16 / 10;
+    max-height: 200px;
     width: 100%;
   }
 
   /* Upcoming — single column */
-  .pf-upcoming-grid { grid-template-columns: 1fr; gap: 14px; }
+  .pf-upcoming-grid { grid-template-columns: 1fr; gap: 16px; }
   .pf-upcoming-card { padding: 22px 20px; }
 
   /* Process — vertical sequence with left-aligned spine */
@@ -1423,7 +1424,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     bottom: 8px;
   }
   .pf-process-list {
-    gap: 40px;
+    gap: 36px;
   }
   .pf-process-row {
     justify-content: flex-start !important;
@@ -1441,21 +1442,31 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   }
 
   /* Tools — 3D Keypad mobile stage */
+  .pf-deck-header-zone {
+    padding: 12px 14px 10px;
+  }
+  .pf-deck-inspection-card {
+    height: auto;
+    min-height: 72px;
+    padding: 10px 14px;
+  }
   .pf-deck-stage {
-    height: 480px;
-  }
-  .pf-deck-callout {
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    max-width: none;
-    padding: 12px 14px;
-  }
-  .pf-deck-callout-name {
-    font-size: 18px;
+    height: clamp(360px, 54vh, 460px);
   }
   .pf-deck-categories-strip {
-    gap: 4px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    gap: 6px;
+    scrollbar-width: none;
+  }
+  .pf-deck-categories-strip::-webkit-scrollbar {
+    display: none;
+  }
+  .pf-deck-cat-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* About — single column */
@@ -1463,22 +1474,54 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
   /* Contact */
   .pf-contact { padding: 72px 0 54px; }
-  .pf-contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .pf-contact-grid { grid-template-columns: 1fr; gap: 44px; }
+  .pf-contact-destinations { gap: 28px; }
+  .pf-contact-dest-link {
+    font-size: clamp(15px, 4.2vw, 19px);
+    word-break: break-all;
+    padding-bottom: 12px;
+  }
   .pf-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .pf-footer-links { gap: 10px 16px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   RESPONSIVE — NARROW MOBILE (≤ 375px)
+   RESPONSIVE — NARROW PORTRAIT MOBILE (≤ 430px)
    ═══════════════════════════════════════════════════════════════════════════ */
-@media (max-width: 375px) {
-  :root { --gutter: 16px; }
-
-  .pf-hero-headline { font-size: 20px; }
-  .pf-project-title { font-size: 18px; }
-
-  .pf-deck-stage {
-    height: 420px;
+@media (max-width: 430px) {
+  :root {
+    --gutter: 18px;
   }
 
-  .pf-upcoming-card { padding: 22px; }
+  .pf-hero { padding-top: 48px; padding-bottom: 32px; }
+  .pf-hero-name { font-size: clamp(26px, 8vw, 36px); }
+  .pf-hero-headline { font-size: clamp(17.5px, 4.8vw, 21px); }
+  .pf-hero-body { font-size: 14.5px; }
+
+  .pf-hero-metric { padding: 14px 10px 14px 0; }
+  .pf-hero-metric:nth-child(even) { padding-left: 12px; }
+  .pf-hero-metric-num { font-size: 22px; }
+  .pf-hero-metric-label { font-size: 9px; }
+
+  .pf-project-visual { max-height: 170px; }
+  .pf-upcoming-card { padding: 20px 16px; }
+
+  .pf-deck-stage {
+    height: 380px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — ULTRA-COMPACT PORTRAIT (≤ 360px: e.g. iPhone SE / 320px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+  :root {
+    --gutter: 14px;
+  }
+
+  .pf-hero-name { font-size: 25px; }
+  .pf-hero-headline { font-size: 17px; }
+  .pf-hero-body { font-size: 14px; }
+  .pf-project-title { font-size: 19px; }
+  .pf-deck-stage { height: 340px; }
 }

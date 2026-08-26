@@ -675,10 +675,14 @@ function MansionDrawing({
   const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
   const driftRef = useRef({ t: 0 });
 
-  useFrame((_, delta) => {
+  useFrame(({ size, camera }, delta) => {
     driftRef.current.t += delta;
     const dt = driftRef.current.t;
     const cam = camera as THREE.PerspectiveCamera;
+    const aspect = size.width / Math.max(1, size.height);
+    // On desktop/landscape (aspect >= 1.15), portraitScale is 1.0.
+    // On portrait mobile (aspect < 1.15, e.g. 0.45 - 0.6), scale camera distance to fit mansion fully.
+    const portraitScale = aspect < 1.15 ? Math.max(1.0, 1.15 / aspect) : 1.0;
 
     // ── 1. Natural, Smooth Architectural Orbit ──
     if (orbitProgress > 0) {
@@ -688,8 +692,8 @@ function MansionDrawing({
       const angle = baseAngle + easedOrbit * totalRotation;
 
       // Natural, subtle elevation breathing that highlights the cantilever depths
-      const yElev = 5.2 + Math.sin(easedOrbit * Math.PI) * 1.4;
-      const radius = baseRadius - Math.sin(easedOrbit * Math.PI) * 0.9;
+      const yElev = (5.2 + Math.sin(easedOrbit * Math.PI) * 1.4) * Math.min(1.25, portraitScale);
+      const radius = (baseRadius - Math.sin(easedOrbit * Math.PI) * 0.9) * portraitScale;
 
       cam.position.x = Math.sin(angle) * radius;
       cam.position.y = yElev;
@@ -697,9 +701,10 @@ function MansionDrawing({
       cam.lookAt(targetLookAt);
     } else {
       // Natural subtle breathing motion during formation
-      cam.position.x = 19.2 + Math.sin(dt * 0.18) * 0.25;
-      cam.position.y = 5.2 + Math.cos(dt * 0.14) * 0.14;
-      cam.position.z = 22.0;
+      const currentRadius = baseRadius * portraitScale;
+      cam.position.x = Math.sin(baseAngle) * currentRadius + Math.sin(dt * 0.18) * 0.25;
+      cam.position.y = (5.2 + Math.cos(dt * 0.14) * 0.14) * Math.min(1.25, portraitScale);
+      cam.position.z = Math.cos(baseAngle) * currentRadius;
       cam.lookAt(targetLookAt);
     }
 
