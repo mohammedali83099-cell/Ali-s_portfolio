@@ -1237,9 +1237,28 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.pf-contact-dest-value {
-  letter-spacing: -0.01em;
-  word-break: break-all;
+.pf-contact-dest-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.pf-contact-dest-icon {
+  width: 18px;
+  height: 18px;
+  color: #888;
+  flex-shrink: 0;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pf-contact-dest-text {
+  letter-spacing: 0.04em;
+  font-weight: 450;
+}
+
+.pf-contact-dest-link:hover .pf-contact-dest-icon {
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .pf-contact-dest-arrow {
@@ -1478,7 +1497,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .pf-contact-destinations { gap: 28px; }
   .pf-contact-dest-link {
     font-size: clamp(15px, 4.2vw, 19px);
-    word-break: break-all;
     padding-bottom: 12px;
   }
   .pf-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
