@@ -27,22 +27,20 @@ export function About() {
             {/* Left: editorial narrative — Bell MT / Calisto MT */}
             <div className="pf-about-body" aria-label="About narrative">
               <p>
-                My work spans software products, AI/ML applications, prototypes,
-                and increasingly, problems rooted in construction and other
-                real-world engineering domains. I approach projects by first
-                understanding the problem and its context, researching the domain,
-                and then designing and building a system around what I find.
+                I’m a Computer Science Engineering student and developer focused on
+                building software systems for complex, real-world problems. My work
+                spans software products, AI/ML applications, prototypes, and systems
+                rooted in engineering domains.
               </p>
               <p>
-                Not every project is intended to become a finished product. Some
-                are prototypes, some are ongoing frameworks, and some are
-                explorations that help me understand a problem more deeply. The work
-                here reflects that progression.
+                I approach projects by first understanding the problem and its context,
+                researching the domain, and then designing and building around what I
+                find. I’m particularly interested in the intersection of software,
+                engineering, and decision-making.
               </p>
               <p>
-                My current direction is toward building technology that connects
-                software with construction, engineering, and complex real-world
-                systems.
+                My current direction is toward building technology that connects software
+                with construction, engineering, and other complex real-world systems.
               </p>
             </div>
 
