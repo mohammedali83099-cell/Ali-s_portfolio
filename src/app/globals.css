@@ -1117,7 +1117,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .pf-about-body {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 17.2px;
   color: var(--fg-2);
   line-height: 1.82;
   max-width: 560px;
