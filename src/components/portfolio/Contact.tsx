@@ -148,7 +148,7 @@ export function Contact() {
       <footer className="pf-footer" aria-label="Site footer">
         <div className="pf-footer-inner">
           <span className="pf-footer-copy">
-            © {new Date().getFullYear()} — PORTFOLIO. ENGINEERING &amp; PRODUCT.
+            © {new Date().getFullYear()} — MOHAMMED ALI. SOFTWARE &amp; ENGINEERING.
           </span>
           <div className="pf-footer-links">
             <a href="#about" className="pf-footer-link">ABOUT</a>
